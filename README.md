@@ -20,7 +20,6 @@ Flask로 백엔드를 구성하고, MySQL로 데이터를 관리합니다.
   /2025_server_project/ 
   
   ├── app.py # Flask 메인 서버 실행 파일 
-  
   ├── db_config.py # MySQL 연결 정보 함수 
   
   ├── init_student_db.sql # 데이터베이스 및 테이블 초기화 SQL 스크립트 
