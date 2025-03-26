@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>시험 일정 캘린더</title>
+
+  <!-- ✅ FullCalendar CSS -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+
+  <style>
+    body {
+      font-family: 'Arial';
+      margin: 30px;
+    }
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>🗓️ 시험 일정 캘린더</h2>
+  <div id='calendar'></div>
+
+  <!-- ✅ FullCalendar JS -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+  <!-- ✅ FullCalendar 초기화 코드 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'ko',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,listWeek'
+        },
+        events: function (fetchInfo, successCallback, failureCallback) {
+          fetch('/api/schedules')
+            .then(res => res.json())
+            .then(data => {
+              const events = data.map(item => {
+                const [month, day] = item.date.split('/');
+                const [startTime, endTime] = item.time.split('~');
+
+                return {
+                  title: item.event + ' (' + item.time + ')',
+                  start: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${startTime}`,
+                  end: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${endTime}`,
+                };
+              });
+              successCallback(events);
+            })
+            .catch(err => {
+              console.error('일정 불러오기 실패', err);
+              failureCallback(err);
+            });
+        }
+      });
+      calendar.render();
+    });
+  </script>
+</body>
+</html>
