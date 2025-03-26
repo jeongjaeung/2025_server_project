@@ -15,9 +15,8 @@ Flask로 백엔드를 구성하고, MySQL로 데이터를 관리합니다.
 - **HTML / CSS / JS** - 프론트엔드 기본
 
 ---
-
+## 📁 파일구조
 ```
-  ## 📁 파일구조
   2025_server_project
   ├── app.py 
   ├── db_config.py 
