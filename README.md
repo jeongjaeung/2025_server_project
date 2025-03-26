@@ -45,6 +45,7 @@ python app.py
 - **MySQL** - 데이터베이스
 - **HTML / CSS / JS** - 프론트엔드 기본
 
+---
  
 ## 📁 파일구조
 ```
