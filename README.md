@@ -2,7 +2,8 @@
 
 - 프로젝트 목적: 학생 간 시험 일정 공유와 중복 피하기!
 - 대학에서 **시험 일정을 등록하고 확인**할 수 있는 간단한 웹 서비스.  
-- Flask로 백엔드를 구성하고, MySQL로 데이터를 관리. 
+- Flask로 백엔드를 구성하고, MySQL로 데이터를 관리.
+  
 
 ## ✅ 설치 (Installation)
 
@@ -28,12 +29,14 @@ SELECT * FROM users;
 UPDATE users SET is_admin = TRUE WHERE student_id = '관리자_학번';
 ```
 
+
 ## 🛠️ 사용 기술 (Tech Stack)
 
 - **Python 3.10+**
 - **Flask** - 백엔드 웹 프레임워크
 - **MySQL** - 데이터베이스
 - **HTML / CSS / JS** - 프론트엔드 기본
+
  
 ## 📁 파일구조
 ```
