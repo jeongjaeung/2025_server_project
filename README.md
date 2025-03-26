@@ -30,6 +30,12 @@ SELECT * FROM users;
 UPDATE users SET is_admin = TRUE WHERE student_id = '관리자_학번';
 ```
 
+### 3️⃣ 서버 실행
+
+```bash
+python app.py
+```
+
 ---
 
 ## 🛠️ 사용 기술 (Tech Stack)
