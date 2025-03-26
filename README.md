@@ -4,6 +4,7 @@
 - 대학에서 **시험 일정을 등록하고 확인**할 수 있는 간단한 웹 서비스.  
 - Flask로 백엔드를 구성하고, MySQL로 데이터를 관리.
   
+---
 
 ## ✅ 설치 (Installation)
 
@@ -29,6 +30,7 @@ SELECT * FROM users;
 UPDATE users SET is_admin = TRUE WHERE student_id = '관리자_학번';
 ```
 
+---
 
 ## 🛠️ 사용 기술 (Tech Stack)
 
