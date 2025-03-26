@@ -36,4 +36,5 @@ Flask로 백엔드를 구성하고, MySQL로 데이터를 관리합니다.
 │ ├── student_add.html # 시험 일정 추가 화면 
 │ ├── student_main.html # 학생 메인 페이지 (일정 목록) 
 │ └── thanks.html # 회원가입 완료 안내 페이지
+
 ---
