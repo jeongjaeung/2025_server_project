@@ -16,13 +16,13 @@ pip install -r requirements.txt
 
 ### 2️⃣ MySQL에 데이터베이스 및 테이블 생성
 
-- MySQL이 실행 중이어야 하며, 본인의 MySQL 환경에 맞는 비밀번호를 입력합니다:
+- MySQL이 실행 중이어야 하며, 본인의 MySQL 환경에 맞는 비밀번호를 입력:
 
 ```bash
 mysql -u root -p < init_student_db.sql
 ```
 
-- 관리자 권한을 가진 유저를 직접 추가하고 싶다면, 아래 명령어로 접근 후 수동 삽입도 가능합니다:
+- 관리자 권한을 가진 유저를 추가하고 싶다면, 아래 명령어로 접근 후 수동 삽입 가능:
 ```ruby
 mysql -u root -p
 USE student_db;
