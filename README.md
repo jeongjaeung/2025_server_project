@@ -4,6 +4,16 @@
 - 대학에서 **시험 일정을 등록하고 확인**할 수 있는 간단한 웹 서비스.  
 - Flask로 백엔드를 구성하고, MySQL로 데이터를 관리. 
 
+## ✅ 설치 (Installation)
+
+### 1️⃣ 필수 패키지 설치
+
+먼저 필요한 Python 패키지를 설치합니다:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## 🛠️ 사용 기술 (Tech Stack)
 
 - **Python 3.10+**
@@ -39,5 +49,3 @@
   │ 
   └── README.md 
 ```
-
----
