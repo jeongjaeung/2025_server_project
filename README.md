@@ -46,6 +46,15 @@ python app.py
 - **HTML / CSS / JS** - 프론트엔드 기본
 
 ---
+
+## ✅ 필수기능:
+- 신규 일정 추가 (Create) 
+- 일정 수정 (Update) 
+- 일정 삭제 (Delete) 
+- 전체 일정 조회 (Read) 
+- Redirect와 JSON 사용 
+
+---
  
 ## 📁 파일구조
 ```
