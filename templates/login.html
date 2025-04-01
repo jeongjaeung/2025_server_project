@@ -1,22 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>로그인</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시험일정 통합 로그인</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
-    <div class="form-container">
-        <h2>로그인</h2>
-        <form action="/login" method="POST">
-            <input type="text" name="student_id" placeholder="학번" required>
-            <input type="password" name="password" placeholder="비밀번호" required>
-            <button type="submit">로그인</button>
+  <div class="mainSquare">
+    <p class="header-text">시험일정 통합 로그인</p>
+
+    <div class="subSquare">
+      <!-- 로그인 폼 -->
+      <div class="login-form" id="loginForm">
+        <form>
+          <div class="input-group">
+            <label for="loginId">아이디</label>
+            <input type="text" id="loginId" placeholder="직번/학번을 입력하세요">
+          </div>
+          <div class="input-group">
+            <label for="loginPw">비밀번호</label>
+            <input type="password" id="loginPw" placeholder="비밀번호를 입력하세요">
+          </div>
+          <button type="submit" class="submit-btn">로그인</button>
         </form>
-        {% if error %}
-            <p style="color:red">{{ error }}</p>
-        {% endif %}
-        <p>계정이 없으신가요? <a href="/register">회원가입</a></p>
+        <div class="links">
+          <a href="#" id="switchToRegister">회원가입</a>
+        </div>
+      </div>
+
+      <!-- 회원가입 폼 -->
+      <div class="register-form" id="registerForm" style="display:none;">
+        <form>
+          <div class="input-group">
+            <label for="regId">아이디</label>
+            <input type="text" id="regId" placeholder="직번/학번을 입력하세요">
+          </div>
+          <div class="input-group">
+            <label for="regPw">비밀번호</label>
+            <input type="password" id="regPw" placeholder="비밀번호를 입력하세요">
+          </div>
+          <div class="user-type-group">
+            <span class="user-type-title">사용자 유형</span>
+            <div class="radio-options">
+              <div class="radio-option">
+                <input type="radio" id="professor" name="userType" value="professor">
+                <label for="professor" class="radio-label">
+                  <span class="radio-custom"></span>
+                  교수
+                </label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="student" name="userType" value="student">
+                <label for="student" class="radio-label">
+                  <span class="radio-custom"></span>
+                  학생
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="input-group" id="courseInputGroup" style="display:none;">
+            <label for="courseInput">수강/담당 과목 입력 (쉼표로 구분)</label>
+            <input type="text" id="courseInput" placeholder="예: 자료구조, 운영체제, 인공지능">
+          </div>
+          <button type="submit" class="submit-btn">가입하기</button>
+        </form>
+        <div class="links">
+          <a href="#" id="switchToLogin">로그인 화면으로</a>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
 </body>
 </html>

@@ -2,65 +2,40 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>student_main</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
   <title>시험 일정 캘린더</title>
 
   <!-- ✅ FullCalendar CSS -->
   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
 
-  <style>
-    body {
-      font-family: 'Arial';
-      margin: 30px;
-    }
-    #calendar {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-  </style>
+  <!-- ✅ 내 CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}">
 </head>
 <body>
-  <h2>🗓️ 시험 일정 캘린더</h2>
-  <div id='calendar'></div>
+  <div class="mainSquare">
+    <div class="textContainer">
+      <a href="#" class="goback_button" id="goback_button">돌아가기</a>
+      <p class="p1">{{ 'PROFESSOR' if is_admin else 'STUDENT' }}</p>
+    </div>
+    <h2>🗓️ 시험 일정</h2>
+    <div id="calendar"></div>
+  </div>
+
+  <script>
+    const isAdmin = true;
+    const courseId = new URLSearchParams(window.location.search).get('course_id');
+  </script>
 
   <!-- ✅ FullCalendar JS -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
-  <!-- ✅ FullCalendar 초기화 코드 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'ko',
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,listWeek'
-        },
-        events: function (fetchInfo, successCallback, failureCallback) {
-          fetch('/api/schedules')
-            .then(res => res.json())
-            .then(data => {
-              const events = data.map(item => {
-                const [month, day] = item.date.split('/');
-                const [startTime, endTime] = item.time.split('~');
-
-                return {
-                  title: item.event + ' (' + item.time + ')',
-                  start: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${startTime}`,
-                  end: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${endTime}`,
-                };
-              });
-              successCallback(events);
-            })
-            .catch(err => {
-              console.error('일정 불러오기 실패', err);
-              failureCallback(err);
-            });
-        }
-      });
-      calendar.render();
-    });
-  </script>
+  <!-- ✅ 내 JS -->
+  <script src="{{ url_for('static', filename='calendar.js') }}"></script>
+  
 </body>
 </html>

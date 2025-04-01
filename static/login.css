@@ -1,0 +1,199 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+/* 모바일 화면 틀 */
+.mainSquare {
+    width: 350px; /* 너비 */
+    height: 600px; /* 높이 */
+    border: 5px solid #000000; /* 경계선 두께 및 색상 */
+    border-radius: 60px; /* 모서리 둥글기 */
+    background: linear-gradient(to bottom, #c9e5f5, #ffffff);
+    display: flex; /* 내부 요소 정렬을 위해 flex 사용 */
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    justify-content: flex-start; /* 수직 시작 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    padding-top: 20px; /* 위쪽 패딩 추가 */
+}
+
+/* 헤더 텍스트 스타일 */
+.header-text {
+    color: #000000;
+    font-size: 28px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+/* 폼 컨테이너 */
+.login-form, .register-form {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* 입력 그룹 스타일 */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 사용자 유형 선택 그룹 */
+.user-type-group {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.user-type-title {
+    display: block;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 16px;
+}
+
+/* 수평 정렬된 라디오 버튼 그룹 */
+.radio-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 라디오 버튼 컨테이너 */
+.radio-option {
+    display: flex;
+    align-items: center;
+}
+
+/* 기본 라디오 버튼 숨기기 */
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+/* 커스텀 라디오 버튼 디자인 - 꽉 찬 보라색 */
+.radio-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+}
+
+.radio-custom {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    background: white; /* 기본 상태는 흰색 배경 */
+    transition: all 0.2s ease;
+}
+
+/* 선택된 상태 - 완전히 보라색으로 채움 */
+input[type="radio"]:checked + .radio-label .radio-custom {
+    background: #1177cb; /* 배경 전체를 보라색으로 */
+    border-color: #1d4ed8; /* 테두리도 보라색으로 */
+}
+
+/* 호버 효과 */
+.radio-label:hover .radio-custom {
+    border-color: #999;
+}
+
+/* 선택된 텍스트 강조 */
+input[type="radio"]:checked + .radio-label {
+    color: #1d4ed8; /* 선택 시 텍스트도 보라색으로 */
+    font-weight: bold;
+}
+/* 버튼 스타일 */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: normal;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* 링크 스타일 */
+.links {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.links a {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* 뒤로 가기 버튼 */
+.goback_button {
+    align-self: flex-start;
+    margin-left: 30px;
+    color: #c0c0c0;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.goback_button:hover {
+    color: #959595;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 400px) {
+    .mainSquare {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+    
+    .subSquare {
+        width: 100%;
+        height: calc(100% - 100px);
+        border-radius: 0;
+        border: none;
+    }
+}

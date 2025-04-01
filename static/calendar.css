@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+}
+  
+  /* 모바일 화면 틀 */
+  .mainSquare {
+    width: 350px;
+    height: 600px;
+    border: 5px solid #000000;
+    border-radius: 60px;
+    background: linear-gradient(to bottom, #eebfd3, #ffffff);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+    overflow: hidden; /* 내부 내용 넘치지 않게 */
+  }
+
+/* 텍스트 스타일 */
+.p1 {
+    margin: 0; /* 기본 마진 제거 */
+    margin-top: 0px; /* 위쪽 공간 추가 */
+    text-align: right; /* 텍스트 오른쪽 정렬 */
+    font-size: 16px; /* 글씨 크기 */
+    width: 100%; /* 부모 요소의 너비에 맞추기 */
+    padding-right: 50px; /* 오른쪽 여백 추가 */
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
+    color: #4c4c4c;
+}
+
+  /* 돌아가기기 버튼 */
+.goback_button {
+    margin: 0; /* 기본 마진 제거 */
+    margin-top: 0px; /* 위쪽 공간 추가 */
+    text-align: right; /* 텍스트 오른쪽 정렬 */
+    font-size: 16px; /* 글씨 크기 */
+    width: 100%; /* 부모 요소의 너비에 맞추기 */
+    padding-right: 100px; /* 오른쪽 여백 추가 */
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
+    text-decoration: none; /* 밑줄 제거 */
+    color: #4c4c4c; /* 링크 색상 */
+    transition: color 0.3s; /* 색상 전환 효과 */
+}
+
+/* 삭제 버튼 호버 효과*/
+.goback_button:hover {
+    color: #000000; /* 호버 시 색상 변경 */
+}
+
+.textContainer {
+    margin-top: 20px; /* 텍스트와 입력 필드 간의 간격 */
+    display: flex; /* 텍스트를 가로로 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    width: 100%; /* 전체 너비 */
+}
+  
+  /* FullCalendar 영역 */
+  #calendar {
+    flex-grow: 1;         /* 남은 공간만 차지 */
+    width: 100%;
+    max-height: 100%;
+    padding: 20px;         /* ✅ 내부 여백 */
+    overflow-y: auto;
+  }
+  
+/* FullCalendar 상단 툴바 버튼 스타일 조정 */
+.fc .fc-button {
+    font-size: 12px;        /* 폰트 크기 줄이기 */
+    padding: 2px 6px;       /* 위아래, 좌우 여백 줄이기 */
+    height: 24px;           /* 버튼 높이 */
+    line-height: 1;
+    border-radius: 6px;     /* 둥글게 */
+  }
+  
+/* 상단 날짜 범위 글씨 크기 줄이기 */
+.fc .fc-toolbar-title {
+    font-size: 14px;       /* 원하는 크기로 조절 (기본은 1.5rem 이상) */
+    font-weight: 500;      /* 필요하면 굵기 조정 */
+  }
+
+  /* 버튼 간 간격 좁히기 */
+  .fc .fc-button-group > .fc-button {
+    margin-right: 4px;
+  }
+
+  /* 주간 날짜 헤더 (3.24(화) 등) 글씨 크기 줄이기 */
+.fc .fc-col-header-cell {
+    font-size: 12px;     /* 원하는 크기로 줄이기 */
+    font-weight: 400;    /* 필요시 얇게 */
+    padding: 4px 0;      /* 여백 줄이기 */
+  }
+  
