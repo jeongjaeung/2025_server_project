@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
 
   // ✅ admin 여부와 course_id 가져오기
-  const isAdmin = window.isAdmin; // calendar.html에서 삽입된 값
+  const isAdmin = window.isAdmin;
   const courseId = new URLSearchParams(window.location.search).get('course_id');
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
     slotDuration: "00:30:00",
     scrollTime: "08:00:00",
     displayEventTime: false,
+
+    eventOverlap: true,
+    slotEventOverlap: true,
 
     slotLabelFormat: {
       hour: '2-digit',
@@ -37,12 +40,16 @@ document.addEventListener('DOMContentLoaded', function () {
       const month = date.getMonth() + 1;
       const day = date.getDate();
       const weekday = date.toLocaleDateString('ko-KR', { weekday: 'short' });
-      return `${month}.${day} ${weekday}`;
+      return {
+        html: `<div style="text-align: center;">
+                 ${month}. ${day}<br>
+                 ${weekday}
+               </div>`
+      };
     },
 
     // ✅ 일정 가져오기
     events: function (fetchInfo, successCallback, failureCallback) {
-      // URL 결정
       const url = courseId
         ? `/api/schedules/by-course?course_id=${courseId}`
         : (isAdmin ? '/api/schedules/all' : '/api/schedules');
@@ -53,63 +60,78 @@ document.addEventListener('DOMContentLoaded', function () {
           return res.json();
         })
         .then(data => {
+          // console.log('받아온 data:', data);
           let events = [];
 
-          if (isAdmin && !courseId) {
-            // 🔧 관리자 + 전체 보기
-            const grouped = {};
-            data.forEach(item => {
-              const dateKey = item.date.trim();
-              const timeKey = item.time.trim();
-              const key = `${dateKey}-${timeKey}`;
+          // ✅ 날짜(date)별로 모으기
+          const dateGrouped = {};
+          data.forEach(item => {
+            const dateKey = item.date.trim();
+            if (!dateGrouped[dateKey]) {
+              dateGrouped[dateKey] = [];
+            }
+            dateGrouped[dateKey].push(item);
+          });
 
-              if (!grouped[key]) {
-                grouped[key] = {
-                  date: dateKey,
-                  time: timeKey,
-                  hoverTexts: []
-                };
-              }
+          // ✅ 날짜별로 처리
+          Object.keys(dateGrouped).forEach(dateKey => {
+            const items = dateGrouped[dateKey];
 
-              grouped[key].hoverTexts.push(`${item.event} (${item.name})`);
+            // 시간순 정렬
+            items.sort((a, b) => {
+              const [aStart] = a.time.trim().split('~');
+              const [bStart] = b.time.trim().split('~');
+              return aStart.localeCompare(bStart);
             });
 
-            events = Object.values(grouped).map(item => {
-              const [month, day] = item.date.split('/');
-              const [startTime, endTime] = item.time.split('~');
+            let groups = [];
+            let currentGroup = [];
+            let currentStart = null;
+            let currentEnd = null;
 
-              return {
-                title: '',
-                start: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${startTime}`,
-                end: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${endTime}`,
-                backgroundColor: '#f06292',
-                borderColor: '#c62828',
-                textColor: 'transparent',
-                extendedProps: {
-                  tooltip: item.hoverTexts.join('\n')
+            items.forEach(item => {
+              const [startTime, endTime] = item.time.trim().split('~');
+
+              if (!currentGroup.length) {
+                currentGroup.push(item);
+                currentStart = startTime;
+                currentEnd = endTime;
+              } else {
+                if (startTime <= currentEnd) {
+                  currentGroup.push(item);
+                  if (endTime > currentEnd) currentEnd = endTime;
+                } else {
+                  groups.push({ start: currentStart, end: currentEnd, items: currentGroup });
+                  currentGroup = [item];
+                  currentStart = startTime;
+                  currentEnd = endTime;
                 }
-              };
+              }
             });
 
-          } else {
-            // 🔹 일반 학생 or 특정 수업을 보는 관리자
-            events = data.map(item => {
-              const [month, day] = item.date.split('/');
-              const [startTime, endTime] = item.time.split('~');
+            if (currentGroup.length) {
+              groups.push({ start: currentStart, end: currentEnd, items: currentGroup });
+            }
 
-              return {
+            // ✅ 그룹별로 event 생성
+            groups.forEach(group => {
+              const [month, day] = dateKey.split('/');
+
+              events.push({
                 title: '',
-                start: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${startTime}`,
-                end: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${endTime}`,
+                start: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${group.start}`,
+                end: `2025-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${group.end}`,
                 backgroundColor: isAdmin ? '#f06292' : '#64b5f6',
                 borderColor: isAdmin ? '#c62828' : '#1976d2',
                 textColor: 'transparent',
                 extendedProps: {
-                  tooltip: isAdmin ? `${item.event} (${item.name})` : item.event
+                  tooltip: group.items.map(item => {
+                    return `${item.name} : ${item.event}`; // name을 user_id로 사용
+                  }).join('\n')
                 }
-              };
+              });
             });
-          }
+          });
 
           successCallback(events);
         })
