@@ -64,8 +64,14 @@ python app.py
   ├── init_student_db.sql 
   ├── requirements.txt 
   │
-  ├── static/ 
-  │   ├── form.css 
+  ├── static/
+  │   ├── images/
+  │   ├── calendar.css
+  │   ├── calendar.js
+  │   ├── login.css
+  │   ├── login.js
+  │   ├── professor_main.css
+  │   ├── professor_main.js
   │   ├── student_add.css 
   │   ├── student_add.js 
   │   ├── student_main.css 
@@ -75,10 +81,9 @@ python app.py
   │   ├── admin.html 
   │   ├── calendar.html 
   │   ├── login.html 
-  │   ├── register.html 
+  │   ├── professor_main.html
   │   ├── student_add.html 
-  │   ├── student_main.html 
-  │   └── thanks.html                                    
+  │   └── student_main.html                                  
   │ 
   ├── .gitignore
   │ 
