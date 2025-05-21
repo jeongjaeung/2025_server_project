@@ -143,39 +143,61 @@ async function fetchScheduleData() {
             const scheduleItem = document.createElement('div');
             scheduleItem.classList.add('scheduleItem');
 
-            const dateElement = document.createElement('div');
-            dateElement.classList.add('date');
-            dateElement.textContent = item.date;
+            // ← 아이콘 그룹
+            const calendarIcon = document.createElement('div');
+            calendarIcon.classList.add('calendarIcon');
+            
+            // 이미지 태그 생성
+            const calendarImg = document.createElement('img');
+            calendarImg.src = '/static/images/calendar.png'; 
+            calendarImg.alt = 'calendar';
+            calendarImg.classList.add('calendarImage');
+            calendarImg.style.width = '30px';
+            calendarImg.style.height = '30px';
 
+            // div 안에 이미지 삽입
+            calendarIcon.appendChild(calendarImg);
+
+            // ← 텍스트 영역
             const eventTimeContainer = document.createElement('div');
             eventTimeContainer.classList.add('eventTimeContainer');
 
-            const eventElement = document.createElement('div');
-            eventElement.classList.add('event');
-            eventElement.textContent = item.event;
+            const dateTimeElement = document.createElement('div');
+            dateTimeElement.classList.add('date-time');
+            dateTimeElement.textContent = `${item.date} ${item.time}`;  // 예: "05 / 17 09:00 ~ 10:30"
 
-            const timeElement = document.createElement('div');
-            timeElement.classList.add('time');
-            timeElement.textContent = item.time;
+            const subjectElement = document.createElement('div');
+            subjectElement.classList.add('subject');
+            subjectElement.textContent = item.event;  // 과목명
 
-            // 수정 아이콘
+            eventTimeContainer.appendChild(dateTimeElement);
+            eventTimeContainer.appendChild(subjectElement);
+
+            // 수정 아이콘 (오른쪽)
             const editIcon = document.createElement('div');
             editIcon.classList.add('editIcon');
-            editIcon.textContent = '✏️';
+            // 이미지 태그 생성
+            const editImg = document.createElement('img');
+            editImg.src = '/static/images/edit.png'; // ← 경로는 실제 위치로
+            editImg.alt = 'edit';
+            editImg.classList.add('editImage');
+            editImg.style.width = '30px';
+            editImg.style.height = '30px';
+
+            // div 안에 이미지 삽입
+            editIcon.appendChild(editImg);
             editIcon.onclick = () => {
-                localStorage.setItem('edit_id', item.id);      
+                localStorage.setItem('edit_id', item.id);
                 localStorage.setItem('edit_date', item.date);
                 localStorage.setItem('edit_event', item.event);
                 localStorage.setItem('edit_time', item.time);
                 window.location.href = '/student_add.html';
             };
 
-            // DOM 조립
-            eventTimeContainer.appendChild(eventElement);
-            eventTimeContainer.appendChild(timeElement);
-            scheduleItem.appendChild(dateElement);
+            scheduleItem.appendChild(calendarIcon);
             scheduleItem.appendChild(eventTimeContainer);
             scheduleItem.appendChild(editIcon);
+
             scheduleItemContainer.appendChild(scheduleItem);
             scheduleContainer.appendChild(scheduleItemContainer);
         });

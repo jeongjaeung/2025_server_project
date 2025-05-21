@@ -1,24 +1,30 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: white;
+    min-height: 100vh;
     margin: 0;
-    background-color: #ffffff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: sans-serif;
+    padding: 25px 25px; /* 위아래 25px 고정 */
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
 /* 모바일 화면 틀 */
 .mainSquare {
-    width: 350px; /* 너비 */
-    height: 600px; /* 높이 */
-    border: 5px solid #000000; /* 경계선 두께 및 색상 */
-    border-radius: 60px; /* 모서리 둥글기 */
-    background: linear-gradient(to bottom, #3a3456, #190f49);
-    display: flex; /* 내부 요소 정렬을 위해 flex 사용 */
-    flex-direction: column; /* 세로 방향으로 정렬 */
-    justify-content: flex-start; /* 수직 시작 정렬 */
-    align-items: center; /* 수평 중앙 정렬 */
-    padding-top: 20px; /* 위쪽 패딩 추가 */
+    background-color: white;
+    height: auto;
+    padding: 2rem;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 274px;
+    border: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-height: 570px;
 }
 
 .textContainer1 {
@@ -26,88 +32,107 @@ body {
     display: flex; /* 텍스트를 가로로 정렬 */
     justify-content: center; /* 중앙 정렬 */
     width: 100%; /* 전체 너비 */
+    gap: 20px;
 }
 
 /* 텍스트 스타일 */
 .p1 {
-    margin: 0; /* 기본 마진 제거 */
-    margin-top: 0px; /* 위쪽 공간 추가 */
-    text-align: right; /* 텍스트 오른쪽 정렬 */
+    background-color: #96CBC6;;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    /* margin: 0; /* 기본 마진 제거 */
+    /* margin-top: 0px; 위쪽 공간 추가 */ 
+    text-align: center; /* 텍스트 오른쪽 정렬 */
     font-size: 16px; /* 글씨 크기 */
-    width: 100%; /* 부모 요소의 너비에 맞추기 */
-    padding-right: 50px; /* 오른쪽 여백 추가 */
-    font-family: 'jua', sans-serif;
-    color: #cdcccc;
+    width: 350px; /* 원하는 가로 길이 (예: 200px) */
+    height: 25px; /* 원하는 세로 길이 (예: 30px) */
+    /* padding-right: 50px; 오른쪽 여백 추가 */
+    /* font-family: 'jua', sans-serif; */
+    color: white;
+    margin: 0;
 }
 
 /* 돌아가기기 버튼 */
 .goback_button {
-    margin: 0; /* 기본 마진 제거 */
-    margin-top: 0px; /* 위쪽 공간 추가 */
-    text-align: right; /* 텍스트 오른쪽 정렬 */
+    /* margin: 0; 기본 마진 제거 */
+    /* margin-top: 0px; 위쪽 공간 추가 */
+    text-align: center; /* 텍스트 오른쪽 정렬 */
     font-size: 16px; /* 글씨 크기 */
-    width: 100%; /* 부모 요소의 너비에 맞추기 */
-    padding-right: 100px; /* 오른쪽 여백 추가 */
-    font-family: "Noto Sans KR", sans-serif;
+    width: 350px; /* 원하는 가로 길이 (예: 200px) */
+    height: 25px; /* 원하는 세로 길이 (예: 30px) */
+    /* width: 100%; 부모 요소의 너비에 맞추기 */
+    padding: 10px 20px;
+    /* padding-right: 100px; 오른쪽 여백 추가 */
+    /* font-family: "Noto Sans KR", sans-serif; */
+    text-decoration: none;
     font-weight: bold;
     text-decoration: none; /* 밑줄 제거 */
-    color: #c0c0c0; /* 링크 색상 */
+    color: white; /* 링크 색상 */
+    background-color: #5B91B8;
+    border: none;
+    border-radius: 6px;
     transition: color 0.3s; /* 색상 전환 효과 */
 }
 
-/* 삭제 버튼 호버 효과*/
+/* 고백 버튼 호버 효과*/
 .goback_button:hover {
-    color: #959595; /* 호버 시 색상 변경 */
+    opacity: 0.9;
 }
 
 .p2 {
-    margin: 0; /* 기본 마진 제거 */
-    margin-top: 30px; /* 위쪽 공간 추가 */
+    /* margin: 0; 기본 마진 제거 */
+    /* margin-top: 22px; 위쪽 공간 추가 */
     text-align: center; /* 텍스트 중앙 정렬 */
-    font-size: 28px; /* 글씨 크기 */
-    font-family: 'jua', sans-serif;
-    color: #d9d8d8;
+    font-size: 1.5rem; /* 글씨 크기 */
+    /* font-family: 'jua', sans-serif; */
+    color: #000;
+    margin-bottom: 0px;
+    font-weight: bold;
 }
 
-/* 작은 도형 */
+/* 
 .subSquare {
-    width: 350px; /* 너비를 mainSquare와 동일하게 설정 */
-    height: 475px; /* 원하는 높이로 조정 */
-    border: 3px solid #000000; /* 경계선 두께 및 색상 */
-    border-radius: 60px; /* 모서리 둥글기 */
+    width: 350px; 
+    height: 475px;
+    border: 3px solid #000000; 
+    border-radius: 60px; 
     background: linear-gradient(to bottom, #d7ebf6, #ffffff);
-    position: relative; /* 상대 위치 설정 */
-    top: 16px; /* 위쪽으로 이동 (필요에 따라 조정) */
-    z-index: 1; /* 겹치는 순서 조정 */
-    font-size: 18px; /* 글씨 크기 */
+    position: relative; 
+    top: 16px; 
+    z-index: 1;
+    font-size: 18px;
     font-family: 'jua', sans-serif;
-}
+} */
 
 .p3 {
-    margin: 0; /* 기본 마진 제거 */
-    margin-top: 20px; /* 위쪽 공간 추가 */
+    /* margin: 0; /* 기본 마진 제거 */
+    /* margin-top: 20px; 위쪽 공간 추가 */ 
     text-align: center; /* 텍스트 중앙 정렬 */
-    font-size: 24px; /* 글씨 크기 */
-    font-family: 'jua', sans-serif;
+    font-size: 16px; /* 글씨 크기 */
+    /* font-family: 'jua', sans-serif; */
+    color: #333;
 }
 
 /* 일정 추가 container */
 .inputContainer {
-    margin-top: 30px; /* 각 입력 필드 간의 간격 */
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* 일정 추가 container 내부 요소 스타일 */
 .inputContainer label {
-    margin-right: 10px; /* 레이블과 입력 필드 간의 간격 */
-    margin-left: 30px; /* 레이블 왼쪽 여백 추가 */
-    font-size: 24px; /* 글씨 크기 */
+    font-size: 15px;
+    display: block;
+    margin-bottom: 6px;
+    color: #000;
 }
 
 /* 날짜 입력 필드 스타일 */
 .dateContainer input[type="text"] {
     width: 25px; /* 날짜 입력 필드 너비 */
     text-align: center; /* 텍스트 중앙 정렬 */
-    font-family: 'jua', sans-serif;
+    /* font-family: 'jua', sans-serif; */
 }
 
 .dateContainer span {
@@ -117,15 +142,15 @@ body {
 /* 과목 입력 필드 스타일 */
 .subjectContainer input[type="text"] {
     width: 200px; /* 과목 입력 필드 너비 */
-    font-family: 'jua', sans-serif;
+    /* font-family: 'jua', sans-serif; */
 }
 
 /* 시간 입력 필드 스타일 */
 .timeContainer input[type="text"] {
     width: 25px; /* 시간 입력 필드 너비 */
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-align: center; /* 텍스트 중앙 정렬 */
-    font-family: 'jua', sans-serif;
+    /* font-family: 'jua', sans-serif; */
 }
 
 .timeContainer span {
@@ -142,34 +167,42 @@ input[type="text"] {
 }
 
 .textContainer {
-    margin-top: 80px; /* 텍스트와 입력 필드 간의 간격 */
+    margin-top: 20px; /* 텍스트와 입력 필드 간의 간격 */
     display: flex; /* 텍스트를 가로로 정렬 */
     justify-content: center; /* 중앙 정렬 */
     width: 100%; /* 전체 너비 */
+    gap: 10px;
 }
 
-/* 저장 버튼 */
+.saveSchedule_button, .deleteSchedule_button {
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    padding: 10px 0;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
 .saveSchedule_button {
-    font-size: 22px; /* 텍스트 크기 */
-    color: #007BFF; /* 링크 색상 */
-    text-decoration: none; /* 밑줄 제거 */
-    transition: color 0.3s; /* 색상 전환 효과 */
+    background-color: #5B91B8;
 }
 
-/* 저장 버튼 호버 효과 */
 .saveSchedule_button:hover {
-    color: #0056b3; /* 호버 시 색상 변경 */
+    opacity: 0.9;
 }
 
-/* 삭제 버튼 */
 .deleteSchedule_button {
-    font-size: 22px; /* 텍스트 크기 */
-    color: #e9879f; /* 링크 색상 */
-    text-decoration: none; /* 밑줄 제거 */
-    transition: color 0.3s; /* 색상 전환 효과 */
+    background-color: #96CBC6;
 }
 
-/* 삭제 버튼 호버 효과*/
 .deleteSchedule_button:hover {
-    color: #f65959; /* 호버 시 색상 변경 */
+    opacity: 0.9;
 }
+
+/* .calendarImage {
+    width: 2px;
+    height: 2px;
+} -> JS에서 정의해놓음 */

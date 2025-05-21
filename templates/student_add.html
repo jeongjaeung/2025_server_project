@@ -18,7 +18,7 @@
             <p class="p1">STUDENT</p>
         </div>
         <p class="p2">시험 일정 추가</p>
-        <div class="subSquare">
+        <!-- <div class="subSquare"> -->
             <p class="p3">일정을 입력하세요!</p>
             <div class="inputContainer dateContainer">
                 <label for="date">날짜 :</label>
@@ -37,11 +37,12 @@
                 <span>시</span>
                 <input type="text" id="startTime_minute" placeholder="00">
                 <span>분</span>
-                <br>
-                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;~</span>
+                <!-- <br> -->
+                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ~</span>
                 <input type="text" id="endTime_hour" placeholder="10">
                 <span>시</span>
                 <input type="text" id="endTime_minute" placeholder="15">
@@ -53,7 +54,7 @@
                 <a href="#" class="deleteSchedule_button" id="deleteSchedule_button">삭제</a>
             </div>
 
-        </div>
+        <!-- </div> -->
     </div>
     <script src="{{ url_for('static', filename='student_add.js') }}"></script>
 
