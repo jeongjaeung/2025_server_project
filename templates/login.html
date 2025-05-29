@@ -35,41 +35,41 @@
       </div>
 
       <!-- 회원가입 폼 -->
-      <div id="registerForm" class="form-section hidden">
-        <form method="POST" action="/register" class="form-inner">
-          <div>
-            <label for="regId" class="input-label">아이디</label>
-            <input type="text" id="regId" name="student_id" class="input-box" placeholder="직번/학번 입력" required />
-          </div>
-          <div>
-            <label for="regPw" class="input-label">비밀번호</label>
-            <input type="password" id="regPw" name="password" class="input-box" placeholder="비밀번호 입력" required />
-          </div>
-
-          <div>
-            <span class="input-label">사용자 유형</span>
-            <div class="button-group">
-              <button type="button" onclick="document.getElementById('professorRadio').checked = true" class="btn-primary">교수</button>
-              <button type="button" onclick="document.getElementById('studentRadio').checked = true" class="btn-secondary">학생</button>
-            </div>
-            <div class="hidden">
-              <input type="radio" id="professorRadio" name="userType" value="professor" required />
-              <input type="radio" id="studentRadio" name="userType" value="student" />
-            </div>
-          </div>
-
-          <div>
-            <label for="courseInput" class="input-label">수강/ 담당 과목 입력 (쉼표로 구분)</label>
-            <input type="text" id="courseInput" name="courses" class="input-box" placeholder="자료구조, 운영체제, 인공지능" />
-          </div>
-
-          <div class="button-group">
-            <button type="submit" class="btn-primary">가입하기</button>
-            <button id="switchToLogin" class="btn-secondary">로그인화면으로</button>
-          </div>
-        </form>
+<div id="registerForm" class="form-section hidden">
+  <form class="form-inner">
+    <div>
+      <label for="regId" class="input-label">아이디</label>
+      <input type="text" id="regId" name="student_id" class="input-box" placeholder="직번/학번 입력" required />
+    </div>
+    <div>
+      <label for="regPw" class="input-label">비밀번호</label>
+      <input type="password" id="regPw" name="password" class="input-box" placeholder="비밀번호 입력" required />
+    </div>
+    <div>
+      <span class="input-label">사용자 유형</span>
+      <div class="button-group">
+        <button type="button" id="professorBtn" class="btn-primary">교수</button>
+        <button type="button" id="studentBtn" class="btn-secondary">학생</button>
+      </div>
+      <div class="hidden">
+        <input type="radio" id="professorRadio" name="userType" value="professor" required />
+        <input type="radio" id="studentRadio" name="userType" value="student" />
       </div>
     </div>
+    <div>
+      <label for="courseInput" class="input-label">수강/ 담당 과목 입력 (쉼표로 구분)</label>
+      <input type="text" id="courseInput" name="courses" class="input-box" placeholder="자료구조, 운영체제, 인공지능" />
+    </div>
+    <div id="professorCodeGroup" class="hidden">
+      <label for="professorCode" class="input-label">교수 인증 코드</label>
+      <input type="text" id="professorCode" name="professor_code" class="input-box" placeholder="교수 코드 입력">
+    </div>
+    <div class="button-group">
+      <button type="submit" class="btn-primary">가입하기</button>
+      <button id="switchToLogin" class="btn-secondary">로그인화면으로</button>
+    </div>
+  </form>
+</div>
 
     <!-- 회원가입 완료 팝업 -->
     <div id="successPopup" style="display:none; position:fixed; top:30%; left:50%; transform:translateX(-50%);

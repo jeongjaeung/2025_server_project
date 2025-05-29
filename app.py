@@ -46,6 +46,18 @@ def register():
         user_type = request.form.get('userType', 'student')
         courses = request.form.get('courses')  # 쉼표 구분 입력값
 
+# 아래처럼 professor_code를 다양한 방식으로 받아보세요
+        professor_code = request.form.get('professor_code') or \
+                         request.values.get('professor_code') or \
+                         request.data or \
+                         request.args.get('professor_code')
+
+        print('professor_code >>>', professor_code)
+        if user_type == 'professor':
+            professor_code = request.form.get('professor_code', '')
+            if professor_code != 'rytn2025':
+                return "교수 인증 코드가 올바르지 않습니다.", 400
+
         hashed_pw = hashlib.sha256(password.encode()).hexdigest()
 
         try:
@@ -57,10 +69,12 @@ def register():
             cursor.execute(sql, (name, student_id, hashed_pw, user_type))
             user_id = cursor.lastrowid
 
-            # 2. 교수라면 professor_profiles 등록
+           # 2. 교수라면 professor_profiles 등록 (관리자 권한 포함)
             if user_type == 'professor':
-                cursor.execute("INSERT INTO professor_profiles (user_id, professor_number) VALUES (%s, %s)", 
-                               (user_id, student_id))
+                 cursor.execute(
+                     "INSERT INTO professor_profiles (user_id, professor_number, is_admin) VALUES (%s, %s, %s)", 
+                     (user_id, student_id, 1)
+                 )
 
             # 3. 과목 처리
             course_names = []
