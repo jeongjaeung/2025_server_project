@@ -6,58 +6,56 @@ USE student_db;
 -- ✅ users 테이블 생성
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    student_id VARCHAR(20) UNIQUE,
-    password VARCHAR(100) NOT NULL,
-    user_type ENUM('student', 'professor') NOT NULL,
-    is_admin TINYINT(1) DEFAULT 0
+    name VARCHAR(50),
+    student_id VARCHAR(30) NOT NULL UNIQUE,
+    password VARCHAR(128) NOT NULL,
+    user_type ENUM('student', 'professor') NOT NULL
 );
+
 
 -- ✅ professor_course 테이블 생성
 CREATE TABLE IF NOT EXISTS professor_courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     professor_id INT NOT NULL,
     course_id INT NOT NULL,
-    FOREIGN KEY (professor_id) REFERENCES users(id),
-    FOREIGN KEY (course_id) REFERENCES courses(id)
+    FOREIGN KEY (professor_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
 -- ✅ professor_profiles 테이블 생성
 CREATE TABLE IF NOT EXISTS professor_profiles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    professor_number VARCHAR(20) UNIQUE,
+    professor_number VARCHAR(30),
     is_admin TINYINT(1) DEFAULT 0,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 
 -- ✅ schedules 테이블 생성
 CREATE TABLE IF NOT EXISTS schedules (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    date VARCHAR(10),
-    event VARCHAR(100),
-    time VARCHAR(50),
-    user_id INT,
+    date VARCHAR(10) NOT NULL,
+    event VARCHAR(100) NOT NULL,
+    time VARCHAR(30) NOT NULL,
+    user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- ✅ schedules 테이블 생성
+
+-- ✅ 과목명 테이블 생성
+CREATE TABLE IF NOT EXISTS courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+-- ✅ student_courses 테이블 생성
 CREATE TABLE IF NOT EXISTS student_courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,
     course_id INT NOT NULL,
-    UNIQUE (student_id, course_id),
-    FOREIGN KEY (student_id) REFERENCES users(id),
-    FOREIGN KEY (course_id) REFERENCES courses(id)
-);
-
--- ✅ schedules 테이블 생성
-CREATE TABLE IF NOT EXISTS courses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    professor_id INT NOT NULL,
-    FOREIGN KEY (professor_id) REFERENCES users(id)
+    FOREIGN KEY (student_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
 
