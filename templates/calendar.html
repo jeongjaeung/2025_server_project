@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=340, initial-scale=1.0">
+  <title>시험 일정 캘린더</title>
+  <!-- 구글폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap" rel="stylesheet">
+  <!-- FullCalendar CSS -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+  <!-- 내 CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}">
+</head>
+<body>
+  <div class="mainSquare">
+    <div class="textContainer1">
+      <button class="goback_button" id="goback_button">&#8592;</button>
+      <button class="professor_button" disabled>PROFESSOR</button>
+    </div>
+    <div class="calendar-title">시험 일정</div>
+    <div id="calendar"></div>
+  </div>
+  <script>
+    const isAdmin = {{ 'true' if is_admin else 'false' }};
+    window.isAdmin = isAdmin;
+    document.getElementById('goback_button').onclick = () => {
+      window.history.back();
+      // 또는 window.location.href = '/professor/dashboard';
+    };
+  </script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+  <script src="{{ url_for('static', filename='calendar.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student_main</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap" rel="stylesheet">    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='student_main.css') }}">
+</head>
+<body>
+    <!-- <div style="position: absolute; top: 10px; right: 20px; font-weight: bold;">
+        {{ name }} ({{ student_id }})
+        <a href="{{ url_for('logout') }}" style="margin-left: 10px; color: red; text-decoration: none;">로그아웃</a>
+    </div> -->
+    
+    <div class="mainSquare">
+        <div class="textContainer1">
+            <a href="#" class="goback_button" id="goback_button">로그아웃</a>
+            <p class="p1">{{ 'PROFESSOR' if is_admin else 'STUDENT' }}</p>
+        </div>
+        <p class="p2">당신의 시험 일정은?</p>
+        <div class="addSchedule_button" id="addSchedule_button">
+            <img src="{{ url_for('static', filename='images/add.png') }}" alt="일정 추가" class="addScheduleImage">
+        </div>
+        <div class="scheduleContainer"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='student_main.js') }}"></script>
+</body>
+</html>

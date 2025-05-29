@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시험일정 통합 로그인</title>
+    <link rel="stylesheet" href="/static/login.css" />
+  </head>
+  <body>
+    <div class="login-box">
+      <!-- 로고 -->
+      <div class="logo-container">
+        <img src="/static/images/ssu_logo.jpg" alt="SSU 로고" class="logo-img" />
+      </div>
+
+      <!-- 타이틀 -->
+      <h2 class="title">시험일정 통합 로그인</h2>
+
+      <!-- 로그인 폼 -->
+      <div id="loginForm" class="form-section">
+        <form method="POST" action="/login" class="form-inner">
+          <div>
+            <label for="loginId" class="input-label">아이디</label>
+            <input type="text" id="loginId" name="student_id" class="input-box" placeholder="직번/학번 입력" required />
+          </div>
+          <div>
+            <label for="loginPw" class="input-label">비밀번호</label>
+            <input type="password" id="loginPw" name="password" class="input-box" placeholder="비밀번호 입력" required />
+          </div>
+          <div class="button-group">
+            <button type="submit" class="btn-primary">로그인</button>
+            <button id="switchToRegister" class="btn-secondary">회원가입</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- 회원가입 폼 -->
+      <div id="registerForm" class="form-section hidden">
+        <form method="POST" action="/register" class="form-inner">
+          <div>
+            <label for="regId" class="input-label">아이디</label>
+            <input type="text" id="regId" name="student_id" class="input-box" placeholder="직번/학번 입력" required />
+          </div>
+          <div>
+            <label for="regPw" class="input-label">비밀번호</label>
+            <input type="password" id="regPw" name="password" class="input-box" placeholder="비밀번호 입력" required />
+          </div>
+
+          <div>
+            <span class="input-label">사용자 유형</span>
+            <div class="button-group">
+              <button type="button" onclick="document.getElementById('professorRadio').checked = true" class="btn-primary">교수</button>
+              <button type="button" onclick="document.getElementById('studentRadio').checked = true" class="btn-secondary">학생</button>
+            </div>
+            <div class="hidden">
+              <input type="radio" id="professorRadio" name="userType" value="professor" required />
+              <input type="radio" id="studentRadio" name="userType" value="student" />
+            </div>
+          </div>
+
+          <div>
+            <label for="courseInput" class="input-label">수강/ 담당 과목 입력 (쉼표로 구분)</label>
+            <input type="text" id="courseInput" name="courses" class="input-box" placeholder="자료구조, 운영체제, 인공지능" />
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn-primary">가입하기</button>
+            <button id="switchToLogin" class="btn-secondary">로그인화면으로</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 회원가입 완료 팝업 -->
+    <div id="successPopup" style="display:none; position:fixed; top:30%; left:50%; transform:translateX(-50%);
+      background:white; padding:20px 30px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.2); z-index:1000; text-align:center;">
+      <p style="font-size:18px; font-weight:bold;">회원가입이 완료되었습니다!</p>
+      <p style="margin-top:5px;">로그인 화면으로 이동해 주세요.</p>
+      <button onclick="hideSuccessPopup()" style="margin-top:15px; padding:8px 16px; border:none; background:#3b82f6; color:white; border-radius:8px;">닫기</button>
+    </div>
+
+    <script src="/static/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+body {
+    background-color: #f7fbfd;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: 'IBM Plex Sans KR', 'Jua', sans-serif;
+    padding: 25px 25px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.mainSquare {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    border: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 570px;
+}
+.textContainer1 {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 18px;
+}
+.p1 {
+    background-color: #96CBC6;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    min-width: 90px;
+    color: white;
+    margin: 0;
+}
+.goback_button {
+    text-align: center;
+    font-size: 16px;
+    min-width: 90px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background-color: #5B91B8;
+    border: none;
+    border-radius: 6px;
+    transition: color 0.3s;
+}
+.goback_button:hover { opacity: 0.9; }
+.p2 {
+    margin: 32px auto 18px auto;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
+}
+.addSchedule_button {
+    width: 94%;
+    height: 52px;
+    border: 2px solid #dcdcdc;
+    background-color: #ffffff;
+    color: rgb(100, 100, 100);
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    margin: 18px auto 18px auto;  
+    cursor: pointer;
+}
+.addSchedule_button:hover { background-color: #e8e8e8; }
+.addScheduleImage {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+.scheduleContainer {
+    width: 94%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 340px;  /* 원하는 높이로 조절 (예시: 340px) */
+    overflow-y: auto;
+    padding: 5px 0;
+}
+.scheduleItemContainer {
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    border: 1.5px solid #e0e7ef;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    gap: 12px;
+    transition: box-shadow 0.13s;
+}
+.scheduleItemContainer:hover {
+    box-shadow: 0 8px 22px rgba(0,164,202,0.13);
+    border: 1.5px solid #00A4CA;
+}
+.icon-calendar {
+    width: 28px; height: 28px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.event-text-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 130px;
+    flex: 1;
+}
+.date-time {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 2px;
+}
+.subject {
+    font-size: 17px;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+}
+.editIcon {
+    width: 26px; height: 26px;
+    cursor: pointer;
+    margin-left: 6px;
+}

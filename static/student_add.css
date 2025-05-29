@@ -1,0 +1,208 @@
+body {
+    background-color: white;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: sans-serif;
+    padding: 25px 25px; /* 위아래 25px 고정 */
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* 모바일 화면 틀 */
+.mainSquare {
+    background-color: white;
+    height: auto;
+    padding: 2rem;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 274px;
+    border: 2px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-height: 570px;
+}
+
+.textContainer1 {
+    margin-top: 20px; /* 텍스트와 입력 필드 간의 간격 */
+    display: flex; /* 텍스트를 가로로 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    width: 100%; /* 전체 너비 */
+    gap: 20px;
+}
+
+/* 텍스트 스타일 */
+.p1 {
+    background-color: #96CBC6;;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    /* margin: 0; /* 기본 마진 제거 */
+    /* margin-top: 0px; 위쪽 공간 추가 */ 
+    text-align: center; /* 텍스트 오른쪽 정렬 */
+    font-size: 16px; /* 글씨 크기 */
+    width: 350px; /* 원하는 가로 길이 (예: 200px) */
+    height: 25px; /* 원하는 세로 길이 (예: 30px) */
+    /* padding-right: 50px; 오른쪽 여백 추가 */
+    /* font-family: 'jua', sans-serif; */
+    color: white;
+    margin: 0;
+}
+
+/* 돌아가기기 버튼 */
+.goback_button {
+    /* margin: 0; 기본 마진 제거 */
+    /* margin-top: 0px; 위쪽 공간 추가 */
+    text-align: center; /* 텍스트 오른쪽 정렬 */
+    font-size: 16px; /* 글씨 크기 */
+    width: 350px; /* 원하는 가로 길이 (예: 200px) */
+    height: 25px; /* 원하는 세로 길이 (예: 30px) */
+    /* width: 100%; 부모 요소의 너비에 맞추기 */
+    padding: 10px 20px;
+    /* padding-right: 100px; 오른쪽 여백 추가 */
+    /* font-family: "Noto Sans KR", sans-serif; */
+    text-decoration: none;
+    font-weight: bold;
+    text-decoration: none; /* 밑줄 제거 */
+    color: white; /* 링크 색상 */
+    background-color: #5B91B8;
+    border: none;
+    border-radius: 6px;
+    transition: color 0.3s; /* 색상 전환 효과 */
+}
+
+/* 고백 버튼 호버 효과*/
+.goback_button:hover {
+    opacity: 0.9;
+}
+
+.p2 {
+    /* margin: 0; 기본 마진 제거 */
+    /* margin-top: 22px; 위쪽 공간 추가 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 1.5rem; /* 글씨 크기 */
+    /* font-family: 'jua', sans-serif; */
+    color: #000;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+/* 
+.subSquare {
+    width: 350px; 
+    height: 475px;
+    border: 3px solid #000000; 
+    border-radius: 60px; 
+    background: linear-gradient(to bottom, #d7ebf6, #ffffff);
+    position: relative; 
+    top: 16px; 
+    z-index: 1;
+    font-size: 18px;
+    font-family: 'jua', sans-serif;
+} */
+
+.p3 {
+    /* margin: 0; /* 기본 마진 제거 */
+    /* margin-top: 20px; 위쪽 공간 추가 */ 
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 16px; /* 글씨 크기 */
+    /* font-family: 'jua', sans-serif; */
+    color: #333;
+}
+
+/* 일정 추가 container */
+.inputContainer {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 일정 추가 container 내부 요소 스타일 */
+.inputContainer label {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 6px;
+    color: #000;
+}
+
+/* 날짜 입력 필드 스타일 */
+.dateContainer input[type="text"] {
+    width: 25px; /* 날짜 입력 필드 너비 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    /* font-family: 'jua', sans-serif; */
+}
+
+.dateContainer span {
+    margin-right: 10px; /* 원하는 여백 크기 설정 */
+}
+
+/* 과목 입력 필드 스타일 */
+.subjectContainer input[type="text"] {
+    width: 200px; /* 과목 입력 필드 너비 */
+    /* font-family: 'jua', sans-serif; */
+}
+
+/* 시간 입력 필드 스타일 */
+.timeContainer input[type="text"] {
+    width: 25px; /* 시간 입력 필드 너비 */
+    margin-bottom: 10px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    /* font-family: 'jua', sans-serif; */
+}
+
+.timeContainer span {
+    margin-right: 10px; /* 원하는 여백 크기 설정 */
+}
+
+
+/* 필드 공통 스타일 */
+input[type="text"] {
+    padding: 8px; /* 패딩 추가 */
+    border-radius: 5px; /* 둥근 모서리 */
+    border: 1px solid #ccc; /* 테두리 색상 */
+    font-size: 20px; /* 글씨 크기 */
+}
+
+.textContainer {
+    margin-top: 20px; /* 텍스트와 입력 필드 간의 간격 */
+    display: flex; /* 텍스트를 가로로 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    width: 100%; /* 전체 너비 */
+    gap: 10px;
+}
+
+.saveSchedule_button, .deleteSchedule_button {
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    padding: 10px 0;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.saveSchedule_button {
+    background-color: #5B91B8;
+}
+
+.saveSchedule_button:hover {
+    opacity: 0.9;
+}
+
+.deleteSchedule_button {
+    background-color: #96CBC6;
+}
+
+.deleteSchedule_button:hover {
+    opacity: 0.9;
+}
+
+/* .calendarImage {
+    width: 2px;
+    height: 2px;
+} -> JS에서 정의해놓음 */

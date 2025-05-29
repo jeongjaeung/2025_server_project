@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student_main</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='student_add.css') }}">
+
+
+</head>
+<body>
+    <div class="mainSquare">
+        <div class="textContainer1">
+            <a href="#" class="goback_button" id="goback_button">돌아가기</a>
+            <p class="p1">STUDENT</p>
+        </div>
+        <p class="p2">시험 일정 추가</p>
+        <!-- <div class="subSquare"> -->
+            <p class="p3">일정을 입력하세요!</p>
+            <div class="inputContainer dateContainer">
+                <label for="date">날짜 :</label>
+                <input type="text" id="date_month" placeholder="1">
+                <span>월</span>
+                <input type="text" id="date_date" placeholder="1">
+                <span>일</span>
+            </div>
+            <div class="inputContainer subjectContainer">
+                <label for="subject">강의 :</label>
+                <input type="text" id="subject" placeholder="강의명">
+            </div>
+            <div class="inputContainer timeContainer">
+                <label for="time">시간 :</label>
+                <input type="text" id="startTime_hour" placeholder="9">
+                <span>시</span>
+                <input type="text" id="startTime_minute" placeholder="00">
+                <span>분</span>
+                <!-- <br> -->
+                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ~</span>
+                <input type="text" id="endTime_hour" placeholder="10">
+                <span>시</span>
+                <input type="text" id="endTime_minute" placeholder="15">
+                <span>분</span>
+            </div>
+
+            <div class="textContainer">
+                <a href="#" class="saveSchedule_button" id="saveSchedule_button">저장</a>
+                <a href="#" class="deleteSchedule_button" id="deleteSchedule_button">삭제</a>
+            </div>
+
+        <!-- </div> -->
+    </div>
+    <script src="{{ url_for('static', filename='student_add.js') }}"></script>
+
+</body>
+</html>

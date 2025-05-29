@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>교수자 메인 (최종 디자인)</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap" rel="stylesheet">
+    <!-- Flask에서 CSS, JS는 반드시 아래처럼 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='professor_main.css') }}">
+</head>
+<body>
+    <div class="mainSquare">
+        <div class="textContainer1">
+            <a href="#" class="goback_button" id="goback_button">로그아웃</a>
+            <p class="p1">PROFESSOR</p>
+        </div>
+        <p class="p2">당신의 시험 일정은?</p>
+        <div class="subjectContainer"></div>
+        <div class="scheduleContainer"></div>
+    </div>
+    <script src="{{ url_for('static', filename='professor_main.js') }}"></script>
+</body>
+</html>
